@@ -53,25 +53,15 @@ runs:
       run: |
         cd ./build
         touch .ignore_changes
-        # wget https://github.com/peterpanstechland/armbian-h88k-images/raw/master/board-dts-add-h88k.patch -O patch/kernel/rockchip-rk3588-legacy/board-makefile-add-h88k.patch
         mkdir -p arch/arm64/boot/dts/rockchip/
-        # wget https://github.com/peterpanstechland/armbian-h88k-images/raw/master/rk3588-h88k.dts -O arch/arm64/boot/dts/rockchip/rk3588-h88k.dts
-        # git diff --no-index --output=./patch/kernel/rockchip-rk3588-legacy/board-dts-add-h88k.patch /dev/null arch/arm64/boot/dts/rockchip/rk3588-h88k.dts || ls -l ./patch/kernel/rockchip-rk3588-legacy/board-dts-add-h88k.patch
-        # wget https://github.com/peterpanstechland/armbian-h88k-images/raw/master/h88k.csc -O config/boards/h88k.csc
-        # cp -r patch/u-boot/legacy/board_rock-5b patch/u-boot/legacy/board_h88k
-        # sed -i "s|# CONFIG_SENSORS_PWM_FAN is not set|CONFIG_SENSORS_PWM_FAN=y|g" config/kernel/linux-rockchip-rk3588-legacy.config
-        # sed -i "s|ext4|fat|g" config/boards/rock-5b.wip
-        wget https://github.com/peterpanstechland/armbian-h68k-images/raw/master/backport-v6.0.16.patch -O patch/kernel/archive/rk35xx-5.10/backport-6.0.16.patch
-        wget https://github.com/peterpanstechland/armbian-h68k-images/raw/master/board-add-linkstar-h6xk-makefile.patch -O patch/kernel/archive/rk35xx-5.10/board-add-linkstar-h6xk-makefile.patch
-        wget https://github.com/peterpanstechland/armbian-h68k-images/raw/master/rk3568-linkstar-h6xk.dtsi -O arch/arm64/boot/dts/rockchip/rk3568-linkstar-h6xk.dtsi
-        # wget https://github.com/peterpanstechland/armbian-h68k-images/raw/master/rk3568-linkstar-h66k.dts -O arch/arm64/boot/dts/rockchip/rk3568-linkstar-h66k.dts
-        wget https://github.com/peterpanstechland/armbian-h68k-images/raw/master/rk3568-linkstar-h68k.dts -O arch/arm64/boot/dts/rockchip/rk3568-linkstar-h68k.dts
+        wget https://github.com/Linkstar-H-series/armbian-h68k-images/raw/master/backport-v6.0.16.patch -O patch/kernel/archive/rk35xx-5.10/backport-6.0.16.patch
+        wget https://github.com/Linkstar-H-series/armbian-h68k-images/raw/master/board-add-linkstar-h6xk-makefile.patch -O patch/kernel/archive/rk35xx-5.10/board-add-linkstar-h6xk-makefile.patch
+        wget https://github.com/Linkstar-H-series/armbian-h68k-images/raw/master/rk3568-linkstar-h6xk.dtsi -O arch/arm64/boot/dts/rockchip/rk3568-linkstar-h6xk.dtsi
+        wget https://github.com/Linkstar-H-series/armbian-h68k-images/raw/master/rk3568-linkstar-h68k.dts -O arch/arm64/boot/dts/rockchip/rk3568-linkstar-h68k.dts
         git diff --no-index --output=./patch/kernel/archive/rk35xx-5.10/rk3568-dtsi-add-linkstar-h6xk.patch /dev/null arch/arm64/boot/dts/rockchip/rk3568-linkstar-h6xk.dtsi || ls -l ./patch/kernel/archive/rk35xx-5.10/rk3568-dtsi-add-linkstar-h6xk.patch
-        # git diff --no-index --output=./patch/kernel/archive/rk35xx-5.10/board-dts-add-linkstar-h66k.patch /dev/null arch/arm64/boot/dts/rockchip/rk3568-linkstar-h66k.dts || ls -l ./patch/kernel/archive/rk35xx-5.10/board-dts-add-linkstar-h66k.patch
         git diff --no-index --output=./patch/kernel/archive/rk35xx-5.10/board-dts-add-linkstar-h68k.patch /dev/null arch/arm64/boot/dts/rockchip/rk3568-linkstar-h68k.dts || ls -l ./patch/kernel/archive/rk35xx-5.10/board-dts-add-linkstar-h68k.patch
-        wget https://github.com/peterpanstechland/armbian-h68k-images/raw/master/linux-rk35xx-legacy.config -O config/kernel/linux-rk35xx-legacy.config
-        # wget https://github.com/peterpanstechland/armbian-h68k-images/raw/master/linkstar-h66k.conf -O config/boards/linkstar-h66k.conf
-        wget https://github.com/peterpanstechland/armbian-h68k-images/raw/master/linkstar-h68k.conf -O config/boards/linkstar-h68k.conf
+        wget https://github.com/Linkstar-H-series/armbian-h68k-images/raw/master/linux-rk35xx-legacy.config -O config/kernel/linux-rk35xx-legacy.config
+        wget https://github.com/Linkstar-H-series/armbian-h68k-images/raw/master/linkstar-h68k.conf -O config/boards/linkstar-h68k.conf
         git status
         docker pull ghcr.io/armbian/docker-armbian-build:armbian-ubuntu-jammy-latest
         ./compile.sh \
